@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "silent-guardians",
+			"path": "."
+		},
+		{
+			"name": "gender-detection",
+			"path": "../../../CascadeProjects/gender-detection"
+		}
+	],
+	"settings": {}
+}

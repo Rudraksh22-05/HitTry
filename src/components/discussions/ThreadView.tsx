@@ -1,18 +1,32 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> friend/main
 import React, { useState, useEffect } from 'react';
 import { useThreadMessages } from '@/hooks/useDiscussions';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+<<<<<<< HEAD
 import { Loader2, ArrowLeft, Wallet } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import ThreadMessage from './ThreadMessage';
 import { threadService } from '@/services/threadService';
+=======
+import { Loader2, ArrowLeft } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import ThreadMessage from './ThreadMessage';
+import { discussionService } from '@/services/discussionService';
+>>>>>>> friend/main
 import { DiscussionThread } from '@/types/discussions';
 import { formatDistanceToNow } from 'date-fns';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
+<<<<<<< HEAD
 import { useContract } from '@/hooks/useContract';
 import { Badge } from "@/components/ui/badge";
+=======
+>>>>>>> friend/main
 
 interface ThreadViewProps {
   threadId: string;
@@ -29,13 +43,20 @@ const ThreadView = ({ threadId, circleId, onBack }: ThreadViewProps) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+<<<<<<< HEAD
   const { account, isConnecting, connectWallet, isRegistered, register } = useContract();
+=======
+>>>>>>> friend/main
 
   useEffect(() => {
     const fetchThread = async () => {
       setIsThreadLoading(true);
       try {
+<<<<<<< HEAD
         const data = await threadService.getThreadById(threadId);
+=======
+        const data = await discussionService.getThreadById(threadId);
+>>>>>>> friend/main
         setThread(data);
       } catch (error) {
         console.error('Error fetching thread:', error);
@@ -59,6 +80,7 @@ const ThreadView = ({ threadId, circleId, onBack }: ThreadViewProps) => {
       navigate("/auth/login");
       return;
     }
+<<<<<<< HEAD
 
     // Check if wallet is connected for blockchain threads
     if (thread?.blockchainId && !account) {
@@ -79,6 +101,8 @@ const ThreadView = ({ threadId, circleId, onBack }: ThreadViewProps) => {
       });
       return;
     }
+=======
+>>>>>>> friend/main
     
     setIsSending(true);
     try {
@@ -86,16 +110,20 @@ const ThreadView = ({ threadId, circleId, onBack }: ThreadViewProps) => {
       setMessageContent('');
     } catch (error) {
       console.error('Failed to send message:', error);
+<<<<<<< HEAD
       toast({
         title: "Error",
         description: "Failed to send message",
         variant: "destructive",
       });
+=======
+>>>>>>> friend/main
     } finally {
       setIsSending(false);
     }
   };
 
+<<<<<<< HEAD
   const handleConnectWallet = async () => {
     try {
       await connectWallet();
@@ -124,6 +152,8 @@ const ThreadView = ({ threadId, circleId, onBack }: ThreadViewProps) => {
     }
   };
 
+=======
+>>>>>>> friend/main
   return (
     <Card className="flex flex-col h-full max-h-[calc(100vh-200px)]">
       <CardHeader className="flex flex-row items-center gap-4 pb-2">
@@ -138,6 +168,7 @@ const ThreadView = ({ threadId, circleId, onBack }: ThreadViewProps) => {
           <div className="h-6 w-40 bg-muted animate-pulse rounded"></div>
         ) : (
           <div className="flex-1">
+<<<<<<< HEAD
             <div className="flex items-center justify-between">
               <CardTitle className="text-xl">{thread?.title}</CardTitle>
               {thread?.blockchainId && (
@@ -181,6 +212,12 @@ const ThreadView = ({ threadId, circleId, onBack }: ThreadViewProps) => {
             {thread?.blockchainContent && (
               <p className="mt-4 text-sm">{thread.blockchainContent}</p>
             )}
+=======
+            <CardTitle className="text-xl">{thread?.title}</CardTitle>
+            <p className="text-sm text-muted-foreground mt-1">
+              Started by @{thread?.anonymousId} • {thread && formatDistanceToNow(new Date(thread.createdAt), { addSuffix: true })}
+            </p>
+>>>>>>> friend/main
           </div>
         )}
       </CardHeader>
@@ -211,6 +248,7 @@ const ThreadView = ({ threadId, circleId, onBack }: ThreadViewProps) => {
       
       <CardFooter className="pt-4 flex flex-col gap-3">
         <Textarea
+<<<<<<< HEAD
           placeholder={
             thread?.blockchainId && !account
               ? "Connect your wallet to participate in this thread..."
@@ -218,11 +256,17 @@ const ThreadView = ({ threadId, circleId, onBack }: ThreadViewProps) => {
               ? "Register your wallet to participate in this thread..."
               : "Share your thoughts anonymously..."
           }
+=======
+          placeholder="Share your thoughts anonymously..."
+>>>>>>> friend/main
           value={messageContent}
           onChange={(e) => setMessageContent(e.target.value)}
           className="resize-none"
           rows={3}
+<<<<<<< HEAD
           disabled={thread?.blockchainId && (!account || !isRegistered)}
+=======
+>>>>>>> friend/main
         />
         <div className="flex justify-between items-center w-full">
           <p className="text-xs text-muted-foreground">
@@ -230,11 +274,15 @@ const ThreadView = ({ threadId, circleId, onBack }: ThreadViewProps) => {
           </p>
           <Button
             onClick={handleSendMessage}
+<<<<<<< HEAD
             disabled={
               isSending || 
               !messageContent.trim() || 
               (thread?.blockchainId && (!account || !isRegistered))
             }
+=======
+            disabled={isSending || !messageContent.trim()}
+>>>>>>> friend/main
           >
             {isSending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Send

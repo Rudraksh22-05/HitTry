@@ -16,9 +16,14 @@ import HowItWorks from "./pages/HowItWorks";
 import Resources from "./pages/Resources";
 import RaiseFunds from "./pages/RaiseFunds";
 import GeoAssistance from "./pages/GeoAssistance";
+<<<<<<< HEAD
 import ContractInteraction from "./pages/ContractInteraction";
 import CrowdFunding from "./pages/CrowdFunding";
 import { TweetList } from "@/components/tweets/TweetList";
+=======
+import MentorAuth from "./pages/mentors/MentorAuth";
+import MentorDashboard from "./pages/mentors/MentorDashboard";
+>>>>>>> friend/main
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
@@ -52,9 +57,14 @@ const App = () => {
               <Route path="/resources" element={<Resources />} />
               <Route path="/raise-funds" element={<RaiseFunds />} />
               <Route path="/geo-assistance" element={<GeoAssistance />} />
+<<<<<<< HEAD
               <Route path="/contract" element={<ContractInteraction />} />
               <Route path="/tweets" element={<TweetList />} />
               <Route path="/CrowdFunding" element={<CrowdFunding />} />
+=======
+              <Route path="/mentors/auth" element={<MentorAuth />} />
+              <Route path="/mentors/dashboard" element={<MentorDashboard />} />
+>>>>>>> friend/main
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> friend/main
 import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -49,9 +52,17 @@ const Resources = () => {
                     <p className="text-muted-foreground text-sm mb-4">
                       Connects individuals with legal aid services near them, with many programs offering specialized services for survivors of violence.
                     </p>
+<<<<<<< HEAD
                     <Button variant="outline" size="sm" className="gap-2">
                       <ExternalLink className="h-4 w-4" />
                       <span>Visit Website</span>
+=======
+                    <Button asChild variant="outline" size="sm" className="gap-2">
+                      <a href="https://nalsa.gov.in/" target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4" />
+                        <span>Visit Website</span>
+                      </a>
+>>>>>>> friend/main
                     </Button>
                   </div>
                   
@@ -60,9 +71,17 @@ const Resources = () => {
                     <p className="text-muted-foreground text-sm mb-4">
                       Provides state-specific legal information on domestic violence, restraining orders, and custody.
                     </p>
+<<<<<<< HEAD
                     <Button variant="outline" size="sm" className="gap-2">
                       <ExternalLink className="h-4 w-4" />
                       <span>Visit Website</span>
+=======
+                    <Button asChild variant="outline" size="sm" className="gap-2">
+                      <a href="https://www.womenslaw.org/" target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4" />
+                        <span>Visit Website</span>
+                      </a>
+>>>>>>> friend/main
                     </Button>
                   </div>
                   
@@ -71,9 +90,17 @@ const Resources = () => {
                     <p className="text-muted-foreground text-sm mb-4">
                       Provides free legal services to victims of sexual assault, with a focus on non-criminal legal issues.
                     </p>
+<<<<<<< HEAD
                     <Button variant="outline" size="sm" className="gap-2">
                       <ExternalLink className="h-4 w-4" />
                       <span>Visit Website</span>
+=======
+                    <Button asChild variant="outline" size="sm" className="gap-2">
+                      <a href="https://www.victimrights.org/" target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4" />
+                        <span>Visit Website</span>
+                      </a>
+>>>>>>> friend/main
                     </Button>
                   </div>
                 </CardContent>
@@ -104,9 +131,17 @@ const Resources = () => {
                     <p className="text-muted-foreground text-sm mb-4">
                       Information about workplace protections for survivors of domestic violence or harassment.
                     </p>
+<<<<<<< HEAD
                     <Button variant="outline" size="sm" className="gap-2">
                       <FileText className="h-4 w-4" />
                       <span>Download PDF</span>
+=======
+                    <Button asChild variant="outline" size="sm" className="gap-2">
+                      <a href="https://www.unwomen.org/sites/default/files/2021-05/Guidance-note-addressing-violence-harassment-women-world-of-work-en.pdf" target="_blank" rel="noopener noreferrer">
+                        <FileText className="h-4 w-4" />
+                        <span>Download PDF Guide</span>
+                      </a>
+>>>>>>> friend/main
                     </Button>
                   </div>
                   
@@ -140,9 +175,17 @@ const Resources = () => {
                     <p className="text-muted-foreground text-sm mb-4">
                       Operates the National Sexual Assault Hotline and connects survivors with local counseling services.
                     </p>
+<<<<<<< HEAD
                     <Button variant="outline" size="sm" className="gap-2">
                       <ExternalLink className="h-4 w-4" />
                       <span>Visit Website</span>
+=======
+                    <Button asChild variant="outline" size="sm" className="gap-2">
+                      <a href="https://www.rainn.org/" target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4" />
+                        <span>Visit Website</span>
+                      </a>
+>>>>>>> friend/main
                     </Button>
                   </div>
                   
@@ -151,9 +194,17 @@ const Resources = () => {
                     <p className="text-muted-foreground text-sm mb-4">
                       Search for therapists who specialize in trauma, PTSD, and abuse recovery.
                     </p>
+<<<<<<< HEAD
                     <Button variant="outline" size="sm" className="gap-2">
                       <ExternalLink className="h-4 w-4" />
                       <span>Visit Website</span>
+=======
+                    <Button asChild variant="outline" size="sm" className="gap-2">
+                      <a href="https://www.psychologytoday.com/us/therapists" target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4" />
+                        <span>Visit Website</span>
+                      </a>
+>>>>>>> friend/main
                     </Button>
                   </div>
                   
@@ -162,9 +213,17 @@ const Resources = () => {
                     <p className="text-muted-foreground text-sm mb-4">
                       Offers affordable therapy sessions for individuals and families in need.
                     </p>
+<<<<<<< HEAD
                     <Button variant="outline" size="sm" className="gap-2">
                       <ExternalLink className="h-4 w-4" />
                       <span>Visit Website</span>
+=======
+                    <Button asChild variant="outline" size="sm" className="gap-2">
+                      <a href="https://openpathcollective.org/" target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4" />
+                        <span>Visit Website</span>
+                      </a>
+>>>>>>> friend/main
                     </Button>
                   </div>
                 </CardContent>
@@ -184,9 +243,17 @@ const Resources = () => {
                     <p className="text-muted-foreground text-sm mb-4">
                       A structured guide to help process trauma and build coping skills.
                     </p>
+<<<<<<< HEAD
                     <Button variant="outline" size="sm" className="gap-2">
                       <FileText className="h-4 w-4" />
                       <span>Download PDF</span>
+=======
+                    <Button asChild variant="outline" size="sm" className="gap-2">
+                      <a href="https://www.cci.health.wa.gov.au/-/media/CCI/Mental-Health-Professionals/PTSD/PTSD-Workbook.pdf" target="_blank" rel="noopener noreferrer">
+                        <FileText className="h-4 w-4" />
+                        <span>Download PDF</span>
+                      </a>
+>>>>>>> friend/main
                     </Button>
                   </div>
                   
@@ -195,9 +262,17 @@ const Resources = () => {
                     <p className="text-muted-foreground text-sm mb-4">
                       Practical methods to manage anxiety, flashbacks, and intrusive thoughts.
                     </p>
+<<<<<<< HEAD
                     <Button variant="outline" size="sm" className="gap-2">
                       <FileText className="h-4 w-4" />
                       <span>Download PDF</span>
+=======
+                    <Button asChild variant="outline" size="sm" className="gap-2">
+                      <a href="https://www.ptsd.va.gov/publications/print/grounding_techniques.pdf" target="_blank" rel="noopener noreferrer">
+                        <FileText className="h-4 w-4" />
+                        <span>Download PDF</span>
+                      </a>
+>>>>>>> friend/main
                     </Button>
                   </div>
                   
@@ -206,9 +281,17 @@ const Resources = () => {
                     <p className="text-muted-foreground text-sm mb-4">
                       Books recommended by therapists for healing from trauma and abuse.
                     </p>
+<<<<<<< HEAD
                     <Button variant="outline" size="sm" className="gap-2">
                       <FileText className="h-4 w-4" />
                       <span>View List</span>
+=======
+                    <Button asChild variant="outline" size="sm" className="gap-2">
+                      <a href="https://www.psychologytoday.com/us/blog/the-compassion-chronicles/201504/10-books-healing-trauma" target="_blank" rel="noopener noreferrer">
+                        <FileText className="h-4 w-4" />
+                        <span>View List</span>
+                      </a>
+>>>>>>> friend/main
                     </Button>
                   </div>
                 </CardContent>

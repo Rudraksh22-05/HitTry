@@ -3,6 +3,7 @@ export { supabase };
 import { DiscussionThread, ThreadMessage, VoteAction } from '@/types/discussions';
 import { v4 as uuidv4 } from 'uuid';
 
+<<<<<<< HEAD
 // Define database types to match Supabase schema
 interface DbThread {
   id: string;
@@ -32,6 +33,8 @@ interface ThreadUpdate {
   blockchain_id?: string | null;
 }
 
+=======
+>>>>>>> friend/main
 // Generate a persistent anonymous ID for the current user in this circle
 export const getAnonymousId = (circleId: string): string => {
   // Get existing anonymous ID from localStorage or create a new one
@@ -50,8 +53,11 @@ export const getAnonymousId = (circleId: string): string => {
 export const discussionService = {
   // Thread operations
   getThreadsByCircle: async (circleId: string): Promise<DiscussionThread[]> => {
+<<<<<<< HEAD
     if (!circleId) throw new Error('Circle ID is required');
 
+=======
+>>>>>>> friend/main
     const { data, error } = await supabase
       .from('discussion_threads')
       .select('*')
@@ -60,15 +66,23 @@ export const discussionService = {
     
     if (error) throw error;
     
+<<<<<<< HEAD
     return (data as DbThread[]).map(thread => ({
+=======
+    return data.map(thread => ({
+>>>>>>> friend/main
       id: thread.id,
       circleId: thread.circle_id,
       title: thread.title,
       createdAt: thread.created_at,
       expiresAt: thread.expires_at,
       anonymousId: thread.anonymous_id,
+<<<<<<< HEAD
       viewCount: thread.view_count,
       blockchainId: thread.blockchain_id || undefined
+=======
+      viewCount: thread.view_count
+>>>>>>> friend/main
     }));
   },
   
@@ -81,6 +95,7 @@ export const discussionService = {
     
     if (error) throw error;
     
+<<<<<<< HEAD
     const thread = data as DbThread;
     
     // Increment view count
@@ -98,12 +113,29 @@ export const discussionService = {
       anonymousId: thread.anonymous_id,
       viewCount: thread.view_count + 1,
       blockchainId: thread.blockchain_id || undefined
+=======
+    // Increment view count
+    await supabase
+      .from('discussion_threads')
+      .update({ view_count: data.view_count + 1 })
+      .eq('id', threadId);
+    
+    return {
+      id: data.id,
+      circleId: data.circle_id,
+      title: data.title,
+      createdAt: data.created_at,
+      expiresAt: data.expires_at,
+      anonymousId: data.anonymous_id,
+      viewCount: data.view_count + 1 // Include the incremented count
+>>>>>>> friend/main
     };
   },
   
   createThread: async (
     circleId: string, 
     title: string, 
+<<<<<<< HEAD
     expiresInDays: number = 30
   ): Promise<DiscussionThread> => {
     if (!circleId) throw new Error('Circle ID is required');
@@ -120,6 +152,10 @@ export const discussionService = {
       throw new Error('Invalid support circle');
     }
 
+=======
+    expiresInDays: number = 30 // Default expiration of 30 days
+  ): Promise<DiscussionThread> => {
+>>>>>>> friend/main
     const anonymousId = getAnonymousId(circleId);
     const expiresAt = new Date();
     expiresAt.setDate(expiresAt.getDate() + expiresInDays);
@@ -131,13 +167,18 @@ export const discussionService = {
           circle_id: circleId, 
           title, 
           anonymous_id: anonymousId,
+<<<<<<< HEAD
           expires_at: expiresAt.toISOString(),
           view_count: 0
+=======
+          expires_at: expiresAt.toISOString() 
+>>>>>>> friend/main
         }
       ])
       .select()
       .single();
     
+<<<<<<< HEAD
     if (error) {
       console.error('Error creating thread:', error);
       throw error;
@@ -157,6 +198,18 @@ export const discussionService = {
       anonymousId: thread.anonymous_id,
       viewCount: thread.view_count,
       blockchainId: thread.blockchain_id || undefined
+=======
+    if (error) throw error;
+    
+    return {
+      id: data.id,
+      circleId: data.circle_id,
+      title: data.title,
+      createdAt: data.created_at,
+      expiresAt: data.expires_at,
+      anonymousId: data.anonymous_id,
+      viewCount: data.view_count
+>>>>>>> friend/main
     };
   },
   
@@ -183,7 +236,11 @@ export const discussionService = {
       }
     }
     
+<<<<<<< HEAD
     return (data as DbMessage[]).map(message => {
+=======
+    return data.map(message => {
+>>>>>>> friend/main
       // Find if the user has voted on this message
       const userVote = userVotes.find(vote => vote.message_id === message.id);
       
@@ -195,8 +252,12 @@ export const discussionService = {
         anonymousId: message.anonymous_id,
         upvotes: message.upvotes,
         downvotes: message.downvotes,
+<<<<<<< HEAD
         userVote: userVote ? userVote.vote_type : null,
         blockchainId: message.blockchain_id || undefined
+=======
+        userVote: userVote ? userVote.vote_type : null
+>>>>>>> friend/main
       };
     });
   },
@@ -207,6 +268,7 @@ export const discussionService = {
     const { data, error } = await supabase
       .from('thread_messages')
       .insert([
+<<<<<<< HEAD
         { 
           thread_id: threadId, 
           content, 
@@ -214,10 +276,14 @@ export const discussionService = {
           upvotes: 0,
           downvotes: 0
         }
+=======
+        { thread_id: threadId, content, anonymous_id: anonymousId }
+>>>>>>> friend/main
       ])
       .select()
       .single();
     
+<<<<<<< HEAD
     if (error) {
       console.error('Error creating message:', error);
       if (error.message?.includes('blockchain_id')) {
@@ -266,6 +332,18 @@ export const discussionService = {
       upvotes: message.upvotes || 0,
       downvotes: message.downvotes || 0,
       blockchainId: message.blockchain_id || undefined
+=======
+    if (error) throw error;
+    
+    return {
+      id: data.id,
+      threadId: data.thread_id,
+      content: data.content,
+      createdAt: data.created_at,
+      anonymousId: data.anonymous_id,
+      upvotes: data.upvotes,
+      downvotes: data.downvotes
+>>>>>>> friend/main
     };
   },
   
@@ -302,6 +380,7 @@ export const discussionService = {
           { message_id: messageId, user_id: userId, vote_type: action }
         ]);
     }
+<<<<<<< HEAD
   },
 
   updateThreadBlockchainId: async (threadId: string, blockchainId: string): Promise<void> => {
@@ -312,5 +391,7 @@ export const discussionService = {
       .eq('id', threadId);
     
     if (error) throw error;
+=======
+>>>>>>> friend/main
   }
 };

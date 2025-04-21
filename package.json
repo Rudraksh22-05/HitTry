@@ -12,6 +12,11 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
+<<<<<<< HEAD
+=======
+    "@mediapipe/drawing_utils": "^0.3.1675466124",
+    "@mediapipe/hands": "^0.4.1675469240",
+>>>>>>> friend/main
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
@@ -47,7 +52,11 @@
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
+<<<<<<< HEAD
     "ethers": "^6.13.5",
+=======
+    "face-api.js": "^0.22.2",
+>>>>>>> friend/main
     "framer-motion": "^12.5.0",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.462.0",

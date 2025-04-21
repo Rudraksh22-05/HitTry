@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> friend/main
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
@@ -15,6 +18,11 @@ import {
   CheckCircle2, 
   ArrowRight 
 } from 'lucide-react';
+<<<<<<< HEAD
+=======
+import * as RadixDialog from "@radix-ui/react-dialog";
+import { useState } from "react";
+>>>>>>> friend/main
 
 const Dashboard = () => {
   const { toast } = useToast();
@@ -218,10 +226,31 @@ const Dashboard = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
+<<<<<<< HEAD
                     <Button variant="ghost" className="w-full justify-start text-sm">
                       <BookOpen size={16} className="mr-2" />
                       Legal Rights Guide
                     </Button>
+=======
+                    <RadixDialog.Root>
+                      <RadixDialog.Trigger asChild>
+                        <Button variant="ghost" className="w-full justify-start text-sm">
+                          <BookOpen size={16} className="mr-2" />
+                          Legal Rights Guide
+                        </Button>
+                      </RadixDialog.Trigger>
+                      <RadixDialog.Portal>
+                        <RadixDialog.Overlay className="fixed inset-0 z-50 bg-black/80" />
+                        <RadixDialog.Content className="fixed left-1/2 top-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded shadow-lg">
+                          <RadixDialog.Title>Hello from Radix</RadixDialog.Title>
+                          <RadixDialog.Description>This is a direct Radix Dialog test.</RadixDialog.Description>
+                          <RadixDialog.Close asChild>
+                            <button className="absolute right-4 top-4">X</button>
+                          </RadixDialog.Close>
+                        </RadixDialog.Content>
+                      </RadixDialog.Portal>
+                    </RadixDialog.Root>
+>>>>>>> friend/main
                     <Button variant="ghost" className="w-full justify-start text-sm">
                       <MessageCircle size={16} className="mr-2" />
                       Support Chat

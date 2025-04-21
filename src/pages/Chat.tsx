@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> friend/main
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
@@ -79,7 +83,11 @@ const ChatPage = () => {
     sender: {
       id: message.user_id,
       name: message.username || "Anonymous",
+<<<<<<< HEAD
       avatarUrl: message.avatar_url,
+=======
+      avatarUrl: message.avatar_url || undefined,
+>>>>>>> friend/main
     },
     timestamp: message.created_at,
   }));
@@ -149,4 +157,8 @@ const ChatPage = () => {
   );
 };
 
+<<<<<<< HEAD
 export default ChatPage;
+=======
+export default ChatPage;
+>>>>>>> friend/main

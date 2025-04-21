@@ -124,5 +124,9 @@ const EmergencySupport = () => {
     </div>
   );
 };
+<<<<<<< HEAD
 
 export default EmergencySupport;
+=======
+export default EmergencySupport;
+>>>>>>> friend/main

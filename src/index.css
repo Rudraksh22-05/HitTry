@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD
 /* Radix Select dropdown debug/fix */
 .radix-select-content,
 [data-state="open"] {
@@ -11,6 +12,8 @@
   opacity: 1 !important;
 }
 
+=======
+>>>>>>> friend/main
 @layer base {
   :root {
     --background: 210 50% 98%;

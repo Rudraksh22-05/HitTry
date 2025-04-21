@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
+=======
+import React, { useState } from 'react';
+>>>>>>> friend/main
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -8,10 +12,15 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+<<<<<<< HEAD
+=======
+import { Separator } from '@/components/ui/separator';
+>>>>>>> friend/main
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+<<<<<<< HEAD
 import { CircleDollarSign, Users, ArrowLeft, Info, Wallet } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectGroup, SelectLabel } from '@/components/ui/select';
 import { crowdfundingContractService } from '@/lib/blockchain/crowdfundingContract';
@@ -46,6 +55,10 @@ const formatCurrency = (amount: number, currency: string): string => {
     maximumFractionDigits: 6,
   }).format(amount);
 };
+=======
+import { CircleDollarSign, Users, ArrowLeft } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+>>>>>>> friend/main
 
 const formSchema = z.object({
   title: z.string().min(10, "Title must be at least 10 characters"),
@@ -66,6 +79,7 @@ const RaiseFunds = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('start');
+<<<<<<< HEAD
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [convertedAmounts, setConvertedAmounts] = useState({
     eth: '0',
@@ -76,6 +90,8 @@ const RaiseFunds = () => {
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
   const [chainId, setChainId] = useState<string | null>(null);
   const [isConnecting, setIsConnecting] = useState(false);
+=======
+>>>>>>> friend/main
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -88,6 +104,7 @@ const RaiseFunds = () => {
     },
   });
 
+<<<<<<< HEAD
   // Check if MetaMask is installed
   const checkIfWalletIsInstalled = () => {
     const { ethereum } = window as any;
@@ -279,6 +296,19 @@ const RaiseFunds = () => {
     } finally {
       setIsSubmitting(false);
     }
+=======
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    console.log(values);
+    toast({
+      title: "Fundraiser created!",
+      description: "Your fundraiser has been submitted for review.",
+    });
+    
+    // Redirect to a success page or dashboard
+    setTimeout(() => {
+      navigate('/dashboard');
+    }, 2000);
+>>>>>>> friend/main
   };
 
   return (
@@ -296,6 +326,7 @@ const RaiseFunds = () => {
           </Button>
           
           <div className="glass-card rounded-2xl p-6 md:p-8 mb-10">
+<<<<<<< HEAD
             <h1 className="text-3xl font-bold mb-2">Create Blockchain Fundraiser</h1>
             <p className="text-muted-foreground mb-6">
               Create a transparent and secure fundraiser on the blockchain
@@ -307,12 +338,25 @@ const RaiseFunds = () => {
                 <TabsTrigger value="create" className="flex-1">Create Fundraiser</TabsTrigger>
                 <TabsTrigger value="view" className="flex-1" onClick={() => navigate('/CrowdFunding')}>View Fundraisers</TabsTrigger>
                 <TabsTrigger value="tips" className="flex-1">Tips & Guidelines</TabsTrigger>
+=======
+            <h1 className="text-3xl font-bold mb-2">Raise Funds</h1>
+            <p className="text-muted-foreground mb-6">
+              Create a fundraiser to receive financial support for your cause
+            </p>
+
+            <Tabs defaultValue="start" value={activeTab} onValueChange={setActiveTab}>
+              <TabsList className="grid w-full grid-cols-3 mb-8">
+                <TabsTrigger value="start">Getting Started</TabsTrigger>
+                <TabsTrigger value="create">Create Fundraiser</TabsTrigger>
+                <TabsTrigger value="tips">Tips & Guidelines</TabsTrigger>
+>>>>>>> friend/main
               </TabsList>
               
               <TabsContent value="start">
                 <div className="space-y-6">
                   <div className="text-center p-6 md:p-10 bg-card rounded-xl">
                     <CircleDollarSign className="h-16 w-16 mx-auto text-primary mb-4" />
+<<<<<<< HEAD
                     <h2 className="text-2xl font-medium mb-4">How Blockchain Fundraising Works</h2>
                     <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
                       Create a transparent and immutable fundraising campaign on the blockchain. 
@@ -328,6 +372,16 @@ const RaiseFunds = () => {
                         Start Your Fundraiser
                       </Button>
                     )}
+=======
+                    <h2 className="text-2xl font-medium mb-4">How Fundraising Works</h2>
+                    <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                      Our secure platform allows you to raise funds while maintaining privacy. All fundraisers
+                      are reviewed for legitimacy, and donors can give anonymously.
+                    </p>
+                    <Button onClick={() => setActiveTab('create')}>
+                      Start Your Fundraiser
+                    </Button>
+>>>>>>> friend/main
                   </div>
                   
                   <div className="grid md:grid-cols-3 gap-6">
@@ -354,7 +408,11 @@ const RaiseFunds = () => {
                         <CardTitle>Receive</CardTitle>
                       </CardHeader>
                       <CardContent>
+<<<<<<< HEAD
                         <p>Receive funds directly to your wallet through smart contracts</p>
+=======
+                        <p>Receive funds directly to your secure account with low platform fees</p>
+>>>>>>> friend/main
                       </CardContent>
                     </Card>
                   </div>
@@ -362,6 +420,7 @@ const RaiseFunds = () => {
               </TabsContent>
               
               <TabsContent value="create">
+<<<<<<< HEAD
                 {!checkIfWalletIsInstalled() ? (
                   <Alert>
                     <AlertTitle>MetaMask Required</AlertTitle>
@@ -681,12 +740,123 @@ const RaiseFunds = () => {
                     </Form>
                   </div>
                 )}
+=======
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                    <div className="space-y-4">
+                      <FormField
+                        control={form.control}
+                        name="title"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Fundraiser Title</FormLabel>
+                            <FormControl>
+                              <Input placeholder="E.g., Support for Child Education Program" {...field} />
+                            </FormControl>
+                            <FormDescription>
+                              Create a clear, specific title that explains your cause
+                            </FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <FormField
+                          control={form.control}
+                          name="category"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Category</FormLabel>
+                              <Select 
+                                onValueChange={field.onChange} 
+                                defaultValue={field.value}
+                              >
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select a category" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  <SelectItem value="medical">Medical & Health</SelectItem>
+                                  <SelectItem value="education">Education</SelectItem>
+                                  <SelectItem value="emergency">Emergency Relief</SelectItem>
+                                  <SelectItem value="community">Community Projects</SelectItem>
+                                  <SelectItem value="legal">Legal Aid</SelectItem>
+                                  <SelectItem value="other">Other</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        
+                        <FormField
+                          control={form.control}
+                          name="goalAmount"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Goal Amount (₹)</FormLabel>
+                              <FormControl>
+                                <Input placeholder="1000" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      
+                      <FormField
+                        control={form.control}
+                        name="description"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Description</FormLabel>
+                            <FormControl>
+                              <Textarea 
+                                placeholder="Explain your cause, how the funds will be used, and why it matters" 
+                                className="min-h-32"
+                                {...field} 
+                              />
+                            </FormControl>
+                            <FormDescription>
+                              Be detailed and transparent about your fundraising goals
+                            </FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="deadline"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Deadline</FormLabel>
+                            <FormControl>
+                              <Input type="date" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    
+                    <Separator />
+                    
+                    <div className="flex justify-end">
+                      <Button type="submit">Submit Fundraiser</Button>
+                    </div>
+                  </form>
+                </Form>
+>>>>>>> friend/main
               </TabsContent>
               
               <TabsContent value="tips">
                 <div className="space-y-6">
                   <Card>
                     <CardHeader>
+<<<<<<< HEAD
                       <CardTitle>Tips for a Successful Fundraiser</CardTitle>
                       <CardDescription>Follow these guidelines to maximize your fundraising potential</CardDescription>
                     </CardHeader>
@@ -709,13 +879,67 @@ const RaiseFunds = () => {
                       </div>
                     </CardContent>
                   </Card>
+=======
+                      <CardTitle>Fundraising Best Practices</CardTitle>
+                      <CardDescription>
+                        Follow these guidelines to maximize your chances of success
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div>
+                        <h3 className="font-medium">Tell Your Story Authentically</h3>
+                        <p className="text-muted-foreground">
+                          Share genuine details about your situation and needs. Authenticity builds trust.
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className="font-medium">Set a Realistic Goal</h3>
+                        <p className="text-muted-foreground">
+                          Calculate your actual needs carefully and set an achievable funding target.
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className="font-medium">Maintain Privacy</h3>
+                        <p className="text-muted-foreground">
+                          Be mindful about what personal details you share. Our platform allows for anonymity.
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className="font-medium">Provide Updates</h3>
+                        <p className="text-muted-foreground">
+                          Keep supporters informed about your progress and how funds are being used.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Transparency & Trust</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="mb-4">
+                        Our platform takes a small 5% fee to cover transaction costs and platform maintenance.
+                        We verify all fundraisers to ensure legitimacy and protect our community.
+                      </p>
+                      <p>
+                        Funds are held securely and released according to our terms and conditions.
+                        See our <Button variant="link" className="p-0 h-auto">Privacy Policy</Button> for details.
+                      </p>
+                    </CardContent>
+                  </Card>
+>>>>>>> friend/main
                 </div>
               </TabsContent>
             </Tabs>
           </div>
         </div>
       </main>
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> friend/main
       <Footer />
     </div>
   );

@@ -26,8 +26,12 @@ yarn-error.log*
 .idea
 .vscode
 *.swp
+<<<<<<< HEAD
 *.swo
 
 # Environment variables
 .env
 .env.*.local
+=======
+*.swo
+>>>>>>> friend/main

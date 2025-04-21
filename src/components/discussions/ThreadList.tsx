@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
+=======
+
+import React, { useState } from 'react';
+>>>>>>> friend/main
 import { useThreads } from '@/hooks/useDiscussions';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,14 +11,21 @@ import { Input } from "@/components/ui/input";
 import { Loader2, Plus } from "lucide-react";
 import { Grid } from "@/components/ui/grid";
 import ThreadItem from './ThreadItem';
+<<<<<<< HEAD
 import * as Dialog from '@radix-ui/react-dialog';
+=======
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+>>>>>>> friend/main
 import { Label } from "@/components/ui/label";
 import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
+<<<<<<< HEAD
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { useContract } from '@/hooks/useContract';
+=======
+>>>>>>> friend/main
 
 interface ThreadListProps {
   circleId: string;
@@ -24,12 +36,16 @@ const ThreadList = ({ circleId, onSelectThread }: ThreadListProps) => {
   const { threads, isLoading, createThread } = useThreads(circleId);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [threadTitle, setThreadTitle] = useState('');
+<<<<<<< HEAD
   const [threadContent, setThreadContent] = useState('');
   const [isBlockchain, setIsBlockchain] = useState(false);
+=======
+>>>>>>> friend/main
   const [isCreating, setIsCreating] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+<<<<<<< HEAD
   const { account, isConnecting, connectWallet, isRegistered, register } = useContract();
 
   // Verify that we have a valid circleId
@@ -62,6 +78,11 @@ const ThreadList = ({ circleId, onSelectThread }: ThreadListProps) => {
       });
       return;
     }
+=======
+
+  const handleCreateThread = async () => {
+    if (!threadTitle.trim()) return;
+>>>>>>> friend/main
     
     if (!user) {
       toast({
@@ -72,6 +93,7 @@ const ThreadList = ({ circleId, onSelectThread }: ThreadListProps) => {
       navigate("/auth/login");
       return;
     }
+<<<<<<< HEAD
 
     // Check wallet connection for blockchain threads
     if (isBlockchain) {
@@ -143,11 +165,23 @@ const ThreadList = ({ circleId, onSelectThread }: ThreadListProps) => {
           variant: "destructive",
         });
       }
+=======
+    
+    setIsCreating(true);
+    try {
+      const thread = await createThread(threadTitle);
+      setIsDialogOpen(false);
+      setThreadTitle('');
+      onSelectThread(thread.id);
+    } catch (error) {
+      console.error('Failed to create thread:', error);
+>>>>>>> friend/main
     } finally {
       setIsCreating(false);
     }
   };
 
+<<<<<<< HEAD
   const handleConnectWallet = async () => {
     try {
       await connectWallet();
@@ -281,6 +315,20 @@ const ThreadList = ({ circleId, onSelectThread }: ThreadListProps) => {
               </Dialog.Content>
             </Dialog.Portal>
           </Dialog.Root>
+=======
+  return (
+    <>
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between pb-2">
+          <CardTitle className="text-xl">Discussion Threads</CardTitle>
+          <Button 
+            size="sm" 
+            onClick={() => setIsDialogOpen(true)}
+          >
+            <Plus className="mr-2 h-4 w-4" />
+            New Thread
+          </Button>
+>>>>>>> friend/main
         </CardHeader>
         
         <CardContent>
@@ -306,7 +354,46 @@ const ThreadList = ({ circleId, onSelectThread }: ThreadListProps) => {
           )}
         </CardContent>
       </Card>
+<<<<<<< HEAD
     </div>
+=======
+      
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Create New Discussion Thread</DialogTitle>
+          </DialogHeader>
+          
+          <div className="space-y-4 py-4">
+            <div className="space-y-2">
+              <Label htmlFor="thread-title">Thread Title</Label>
+              <Input
+                id="thread-title"
+                placeholder="What would you like to discuss?"
+                value={threadTitle}
+                onChange={(e) => setThreadTitle(e.target.value)}
+              />
+            </div>
+            
+            <p className="text-sm text-muted-foreground">
+              Your identity will be kept anonymous in discussions. Others will only see your
+              anonymous ID, not your real account information.
+            </p>
+          </div>
+          
+          <DialogFooter>
+            <Button
+              onClick={handleCreateThread}
+              disabled={isCreating || !threadTitle.trim()}
+            >
+              {isCreating && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              Create Thread
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </>
+>>>>>>> friend/main
   );
 };
 

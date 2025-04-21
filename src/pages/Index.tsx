@@ -46,6 +46,7 @@ const Index = () => {
                 offers multiple ways to connect securely and anonymously.
               </p>
               
+<<<<<<< HEAD
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto h-full">
                 <div className="glass-card p-6 rounded-2xl hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between h-full">
                   <div className="bg-primary/10 p-4 rounded-full w-fit mx-auto mb-4">
@@ -115,6 +116,67 @@ const Index = () => {
                       </Link>
                     </Button>
                   </div>
+=======
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div className="glass-card p-6 rounded-2xl hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                  <div className="bg-primary/10 p-4 rounded-full w-fit mx-auto mb-4">
+                    <MessageCircle size={24} className="text-primary" />
+                  </div>
+                  <h3 className="text-xl font-medium mb-3">Support Circles</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Join anonymous groups focused on specific topics and concerns.
+                  </p>
+                  <Button asChild variant="outline" className="w-full rounded-full whitespace-normal break-words px-4 py-2 min-h-[44px]">
+                    <Link to="/support-circles">
+                      Explore Groups <ArrowRight size={16} className="ml-2" />
+                    </Link>
+                  </Button>
+                </div>
+                
+                <div className="glass-card p-6 rounded-2xl hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                  <div className="bg-primary/10 p-4 rounded-full w-fit mx-auto mb-4">
+                    <BookOpen size={24} className="text-primary" />
+                  </div>
+                  <h3 className="text-xl font-medium mb-3">Resources</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Access guides, legal information, and helpful materials.
+                  </p>
+                  <Button asChild variant="outline" className="w-full rounded-full whitespace-normal break-words px-4 py-2 min-h-[44px]">
+                    <Link to="/resources">
+                      Browse Resources <ArrowRight size={16} className="ml-2" />
+                    </Link>
+                  </Button>
+                </div>
+                
+                <div className="glass-card p-6 rounded-2xl hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                  <div className="bg-destructive/10 p-4 rounded-full w-fit mx-auto mb-4">
+                    <ShieldAlert size={24} className="text-destructive" />
+                  </div>
+                  <h3 className="text-xl font-medium mb-3">Emergency Help</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Get immediate assistance from verified support organizations.
+                  </p>
+                  <SafetyButton 
+                    label="Emergency Support" 
+                    onClick={handleEmergencyClick} 
+                    className="w-full"
+                  />
+                </div>
+                
+                <div className="glass-card p-6 rounded-2xl hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                  <div className="bg-primary/10 p-4 rounded-full w-fit mx-auto mb-4">
+                    <CircleDollarSign size={24} className="text-primary" />
+                  </div>
+                  <h3 className="text-xl font-medium mb-3">Raise Funds</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Create a fundraiser and receive financial support for your cause.
+                  </p>
+                  <Button asChild variant="outline" className="w-full rounded-full whitespace-normal break-words px-4 py-2 min-h-[44px]">
+                    <Link to="/raise-funds">
+                      Start Fundraiser <ArrowRight size={16} className="ml-2" />
+                    </Link>
+                  </Button>
+>>>>>>> friend/main
                 </div>
               </div>
             </div>
@@ -137,13 +199,21 @@ const Index = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
+<<<<<<< HEAD
                   <Button asChild size="lg" className="rounded-full px-8">
+=======
+                  <Button asChild size="lg" className="rounded-full px-8 whitespace-normal break-words py-2 min-h-[44px]">
+>>>>>>> friend/main
                     <Link to="/auth/register">
                       Join Securely <ArrowRight size={16} className="ml-2" />
                     </Link>
                   </Button>
                   
+<<<<<<< HEAD
                   <Button asChild size="lg" variant="outline" className="rounded-full px-8">
+=======
+                  <Button asChild size="lg" variant="outline" className="rounded-full px-8 whitespace-normal break-words py-2 min-h-[44px]">
+>>>>>>> friend/main
                     <Link to="/how-it-works">
                       Learn More
                     </Link>

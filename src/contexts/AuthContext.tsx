@@ -8,6 +8,7 @@ interface AuthContextType {
   user: SupabaseUser | null;
   session: Session | null;
   loading: boolean;
+<<<<<<< HEAD
   signIn: (email: string, password: string) => Promise<AuthResponse>;
   signUp: (email: string, password: string) => Promise<AuthResponse>;
   signOut: () => Promise<void>;
@@ -17,6 +18,12 @@ interface AuthContextType {
 interface AuthResponse {
   error?: Error;
   data?: any;
+=======
+  signIn: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string) => Promise<void>;
+  signOut: () => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
+>>>>>>> friend/main
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -52,10 +59,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
   }, []);
 
+<<<<<<< HEAD
   const signIn = async (email: string, password: string): Promise<AuthResponse> => {
     try {
       setLoading(true);
       const { error } = await supabase.auth.signInWithPassword({ email, password });
+=======
+  const signIn = async (email: string, password: string) => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+>>>>>>> friend/main
       
       if (error) {
         console.error("Sign in error:", error);
@@ -64,29 +78,49 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           description: error.message,
           variant: "destructive",
         });
+<<<<<<< HEAD
         return { error };
       }
       
       console.log("Sign in successful");
+=======
+        throw error;
+      }
+      
+      console.log("Sign in successful:", data);
+>>>>>>> friend/main
       toast({
         title: "Welcome back",
         description: "You've successfully logged in",
       });
       
       navigate('/dashboard');
+<<<<<<< HEAD
       return { data: true };
     } catch (error) {
       console.error("Sign in error:", error);
       return { error };
+=======
+    } catch (error) {
+      console.error("Sign in error:", error);
+      throw error;
+>>>>>>> friend/main
     } finally {
       setLoading(false);
     }
   };
 
+<<<<<<< HEAD
   const signUp = async (email: string, password: string): Promise<AuthResponse> => {
     try {
       setLoading(true);
       const { error } = await supabase.auth.signUp({ 
+=======
+  const signUp = async (email: string, password: string) => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase.auth.signUp({ 
+>>>>>>> friend/main
         email, 
         password,
         options: {
@@ -101,6 +135,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           description: error.message,
           variant: "destructive",
         });
+<<<<<<< HEAD
         return { error };
       }
       
@@ -109,6 +144,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     } catch (error) {
       console.error("Sign up error:", error);
       return { error };
+=======
+        throw error;
+      }
+      
+      console.log("Sign up successful:", data);
+      toast({
+        title: "Account created",
+        description: "Please check your email to confirm your account",
+      });
+      
+    } catch (error) {
+      console.error("Sign up error:", error);
+      throw error;
+>>>>>>> friend/main
     } finally {
       setLoading(false);
     }
@@ -145,7 +194,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
+<<<<<<< HEAD
   const resetPassword = async (email: string): Promise<AuthResponse> => {
+=======
+  const resetPassword = async (email: string) => {
+>>>>>>> friend/main
     try {
       setLoading(true);
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
@@ -158,17 +211,27 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           description: error.message,
           variant: "destructive",
         });
+<<<<<<< HEAD
         return { error };
+=======
+        throw error;
+>>>>>>> friend/main
       }
       
       toast({
         title: "Password reset email sent",
         description: "Please check your email for instructions",
       });
+<<<<<<< HEAD
       return { data: true };
     } catch (error) {
       console.error("Reset password error:", error);
       return { error };
+=======
+    } catch (error) {
+      console.error("Reset password error:", error);
+      throw error;
+>>>>>>> friend/main
     } finally {
       setLoading(false);
     }

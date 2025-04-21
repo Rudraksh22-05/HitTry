@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { RealtimeChannel, RealtimePostgresChangesPayload } from "@supabase/supabase-js";
+=======
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { RealtimeChannel } from "@supabase/supabase-js";
+>>>>>>> friend/main
 
 type SubscriptionEvent = "INSERT" | "UPDATE" | "DELETE";
 
@@ -33,13 +39,19 @@ export function useRealtime<T>({
     
     // Add subscription for each event type
     events.forEach((event) => {
+<<<<<<< HEAD
       newChannel.on(
+=======
+      // TypeScript doesn't perfectly match Supabase's typing, so we need to cast
+      (newChannel as any).on(
+>>>>>>> friend/main
         'postgres_changes',
         {
           event,
           schema,
           table,
         },
+<<<<<<< HEAD
         (payload: RealtimePostgresChangesPayload<T>) => {
           console.log(`Realtime ${event} payload received:`, payload);
           
@@ -49,6 +61,21 @@ export function useRealtime<T>({
             onUpdate(payload.new as T);
           } else if (event === "DELETE" && onDelete) {
             onDelete(payload.old as T);
+=======
+        (payload: any) => {
+          console.log(`Realtime ${event} payload received:`, payload);
+          
+          try {
+            if (event === "INSERT" && onInsert && payload.new) {
+              onInsert(payload.new as T);
+            } else if (event === "UPDATE" && onUpdate && payload.new) {
+              onUpdate(payload.new as T);
+            } else if (event === "DELETE" && onDelete && payload.old) {
+              onDelete(payload.old as T);
+            }
+          } catch (error) {
+            console.error(`Error handling ${event} payload:`, error);
+>>>>>>> friend/main
           }
         }
       );

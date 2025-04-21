@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useState } from "react";
+=======
+import { useState, useRef, useEffect } from "react";
+>>>>>>> friend/main
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -6,9 +10,18 @@ import { Menu, X, Shield, LogIn, User, LogOut, MapPin } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useToast } from "@/hooks/use-toast";
+<<<<<<< HEAD
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+=======
+import RaiseFundsCard from "@/components/RaiseFundsCard";
+
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+>>>>>>> friend/main
   const { user, signOut } = useAuth();
   const isMobile = useIsMobile();
   const { toast } = useToast();
@@ -34,6 +47,25 @@ const Header = () => {
     }
   };
 
+<<<<<<< HEAD
+=======
+  useEffect(() => {
+    if (!isDropdownOpen) return;
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
+
+>>>>>>> friend/main
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container flex h-16 items-center justify-between py-4">
@@ -46,7 +78,11 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         {!isMobile && (
+<<<<<<< HEAD
           <nav className="hidden gap-6 md:flex">
+=======
+          <nav className="hidden gap-6 md:flex items-center">
+>>>>>>> friend/main
             <Link
               to="/support-circles"
               className="text-sm font-medium transition-colors hover:text-primary"
@@ -66,6 +102,7 @@ const Header = () => {
               Resources
             </Link>
             <Link
+<<<<<<< HEAD
               to="/raise-funds"
               className="text-sm font-medium transition-colors hover:text-primary"
             >
@@ -78,11 +115,56 @@ const Header = () => {
               Geo Assistance
             </Link>
             <Link
+=======
+>>>>>>> friend/main
               to="/emergency-support"
               className="text-sm font-medium text-destructive transition-colors hover:text-destructive/80"
             >
               Emergency Support
             </Link>
+<<<<<<< HEAD
+=======
+            {/* Dropdown menu for For Mentors, Raise Funds, Geo Assistance */}
+            <div
+              className="relative"
+              ref={dropdownRef}
+            >
+              <button
+                className="text-sm font-medium transition-colors hover:text-primary focus:outline-none px-3 py-2 rounded-md flex items-center gap-1"
+                aria-haspopup="true"
+                aria-expanded={isDropdownOpen}
+                type="button"
+                onClick={() => setIsDropdownOpen((open) => !open)}
+              >
+                More
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+              </button>
+              {isDropdownOpen && (
+                <div
+                  className="absolute right-0 mt-2 w-56 rounded-md border border-border bg-popover text-popover-foreground shadow-lg z-50"
+                >
+                  <Link
+                    to="/mentors/auth"
+                    className="block px-4 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
+                  >
+                    For Mentors
+                  </Link>
+                  <Link
+                    to="/raise-funds"
+                    className="block px-4 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
+                  >
+                    Raise Funds
+                  </Link>
+                  <Link
+                    to="/geo-assistance"
+                    className="block px-4 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground"
+                  >
+                    Geo Assistance
+                  </Link>
+                </div>
+              )}
+            </div>
+>>>>>>> friend/main
           </nav>
         )}
 
@@ -159,6 +241,7 @@ const Header = () => {
                     Resources
                   </Link>
                   <Link
+<<<<<<< HEAD
                     to="/raise-funds"
                     className="text-lg font-medium hover:text-primary"
                     onClick={closeSheet}
@@ -173,6 +256,8 @@ const Header = () => {
                     Geo Assistance
                   </Link>
                   <Link
+=======
+>>>>>>> friend/main
                     to="/emergency-support"
                     className="text-lg font-medium text-destructive hover:text-destructive/80"
                     onClick={closeSheet}
